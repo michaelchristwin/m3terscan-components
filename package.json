@@ -1,0 +1,31 @@
+{
+  "name": "m3terscan-components",
+  "type": "module",
+  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rolldown -c"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "rolldown": "^1.0.0-beta.58",
+    "rolldown-plugin-dts": "^0.20.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "date-fns": "^4.1.0",
+    "react-chartjs-2": "^5.3.1",
+    "swr": "^2.3.8"
+  }
+}
