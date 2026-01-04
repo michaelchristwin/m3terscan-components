@@ -6,7 +6,6 @@ export default defineConfig({
   output: {
     dir: "dist",
     format: "esm",
-    file: "index",
     name: "m3terscan-components",
   },
   plugins: [dts()],
