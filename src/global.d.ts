@@ -1,4 +1,2 @@
-declare module "*.module.css" {
-  const classes: { [key: string]: string };
-  export default classes;
-}
+// src/env.d.ts
+declare module "*.css";

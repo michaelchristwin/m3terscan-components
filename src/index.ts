@@ -1,2 +1,2 @@
-export * from "./components/DailyBarChart/DailyBarChart";
-export * from "./components/ActivitiesTable/ActivitiesTable";
+export { DailyBarChart } from "./components/DailyBarChart/DailyBarChart";
+export { ActivitiesTable } from "./components/ActivitiesTable/ActivitiesTable";

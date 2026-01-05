@@ -1,8 +1,8 @@
 import useSWR from "swr";
 import { api } from "../../api";
-import styles from "./DailyBarChart.module.css";
 import ChartJS from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
+import "./DailyBarChart.css";
 
 ChartJS.register();
 type DailyBarChartProps = {
@@ -24,8 +24,8 @@ export function DailyBarChart({
 
   if (isLoading) {
     return (
-      <div className={styles.isloading}>
-        <div className={styles.inner}>
+      <div className="isloading">
+        <div className="inner">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -36,11 +36,11 @@ export function DailyBarChart({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={styles.lucide_loader_circle}
+            className="lucide_loader_circle"
           >
             <path d="M21 12a9 9 0 1 1-6.219-8.56" />
           </svg>
-          <p className={styles.loading_text}>Loading charts...</p>
+          <p className="loading_text">Loading charts...</p>
         </div>
       </div>
     );
@@ -111,9 +111,9 @@ export function DailyBarChart({
     };
 
     return (
-      <div className={styles.container}>
-        <h3 className={styles.title}>Hourly energy usage.</h3>
-        <div className={styles.chart}>
+      <div className="container">
+        <h3 className="title">Hourly energy usage.</h3>
+        <div className="chart">
           <Bar data={barChartData} options={barChartOptions} />
         </div>
       </div>
