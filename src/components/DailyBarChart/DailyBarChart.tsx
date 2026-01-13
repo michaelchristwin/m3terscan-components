@@ -4,13 +4,13 @@ import "./DailyBarChart.css";
 import { DailyResponse } from "../../apiClient/data-contracts";
 
 ChartJS.register();
-type DailyBarChartProps = {
+interface DailyBarChartProps {
   data?: DailyResponse[];
   isLoading?: boolean;
   error?: boolean | Error;
   chartLow?: string;
   chartHigh?: string;
-};
+}
 
 export function DailyBarChart({
   isLoading,
@@ -68,7 +68,7 @@ export function DailyBarChart({
           hour12: false,
           hour: "2-digit",
           minute: "2-digit",
-        }),
+        })
       ),
       datasets: [
         {

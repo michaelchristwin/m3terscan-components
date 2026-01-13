@@ -17,7 +17,7 @@ export default defineConfig({
   external: [
     "react",
     "react-dom",
-    "swr",
+    "date-fns",
     "react-chartjs-2",
     "chart.js",
     "react/jsx-runtime",

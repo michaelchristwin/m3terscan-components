@@ -4,7 +4,7 @@ import { ActivitiesResponse } from "../../apiClient/data-contracts";
 
 const tableHeaders = ["Time", "Energy", "Signature", "Value", "Status"];
 
-type ActivitiesTableProps = {
+interface ActivitiesTableProps {
   data?: ActivitiesResponse;
   isLoading?: boolean;
   error?: boolean | Error;
@@ -13,7 +13,7 @@ type ActivitiesTableProps = {
     even: string;
     odd: string;
   };
-};
+}
 
 export function ActivitiesTable({
   headerColor,
