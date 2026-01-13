@@ -1,12 +1,13 @@
-import useSWR from "swr";
-import { api } from "../../api";
 import { formatDistanceToNow } from "date-fns";
 import "./ActivitiesTable.css";
+import { ActivitiesResponse } from "../../apiClient/data-contracts";
 
 const tableHeaders = ["Time", "Energy", "Signature", "Value", "Status"];
 
 type ActivitiesTableProps = {
-  meterId?: number;
+  data?: ActivitiesResponse;
+  isLoading?: boolean;
+  error?: boolean | Error;
   headerColor?: string;
   colors?: {
     even: string;
@@ -15,19 +16,12 @@ type ActivitiesTableProps = {
 };
 
 export function ActivitiesTable({
-  meterId,
   headerColor,
   colors,
+  isLoading,
+  error,
+  data,
 }: ActivitiesTableProps) {
-  const { data, error, isLoading } = useSWR(
-    meterId ? ["activities"] : null,
-    async () =>
-      (await api.getActivitiesM3TerM3TerIdActivitiesGet(meterId!)).data,
-    {
-      refreshInterval: 15 * 60 * 1000,
-    }
-  );
-
   if (isLoading) {
     return (
       <div className="isloading">
@@ -54,8 +48,10 @@ export function ActivitiesTable({
 
   if (error) {
     return (
-      <div>
-        <p>Data loading failed</p>
+      <div className="error_container">
+        <p className="error_text">
+          {typeof error === "object" ? error.message : "Data loading failed"}
+        </p>
       </div>
     );
   }

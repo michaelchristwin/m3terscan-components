@@ -1,27 +1,24 @@
-import useSWR from "swr";
-import { api } from "../../api";
 import ChartJS from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import "./DailyBarChart.css";
+import { DailyResponse } from "../../apiClient/data-contracts";
 
 ChartJS.register();
 type DailyBarChartProps = {
-  meterId?: number;
+  data?: DailyResponse[];
+  isLoading?: boolean;
+  error?: boolean | Error;
   chartLow?: string;
   chartHigh?: string;
 };
 
 export function DailyBarChart({
-  meterId,
+  isLoading,
+  error,
+  data,
   chartLow,
   chartHigh,
 }: DailyBarChartProps) {
-  const { data, error, isLoading } = useSWR(
-    meterId ? ["daily", meterId] : null,
-    async () => (await api.getDailyM3TerM3TerIdDailyGet(meterId!)).data,
-    { refreshInterval: 15 * 60 * 1000 }
-  );
-
   if (isLoading) {
     return (
       <div className="isloading">
@@ -48,8 +45,10 @@ export function DailyBarChart({
 
   if (error) {
     return (
-      <div>
-        <p>Data loading failed</p>
+      <div className="error_container">
+        <p className="error_text">
+          {typeof error === "object" ? error.message : "Data loading failed"}
+        </p>
       </div>
     );
   }
@@ -69,7 +68,7 @@ export function DailyBarChart({
           hour12: false,
           hour: "2-digit",
           minute: "2-digit",
-        })
+        }),
       ),
       datasets: [
         {

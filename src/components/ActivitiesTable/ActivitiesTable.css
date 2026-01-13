@@ -1,44 +1,44 @@
 .table {
-  width: 100%;
-  text-align: left;
-  border-collapse: separate;
-  border-spacing: 0 8px; /* row gap */
+    width: 100%;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* row gap */
 }
 
 .table th,
 .table td {
-  padding: 10px 12px;
+    padding: 10px 12px;
 }
 
 .table_head {
-  font-size: 13px;
+    font-size: 13px;
 }
 
 .isloading {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
 
 .lucide_loader_circle {
-  height: 30px;
-  width: 30px;
-  animation: spin 1s linear infinite;
+    height: 30px;
+    width: 30px;
+    animation: spin 1s linear infinite;
 }
 
 .loading_text {
-  font-size: 14px;
-  line-height: 1.428571;
-  color: #a1a1a1;
+    font-size: 14px;
+    line-height: 1.428571;
+    color: #a1a1a1;
 }
 
 .signature,
@@ -46,29 +46,44 @@
 .energy,
 .time,
 .status {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .signature {
-  max-width: 300px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .status {
-  color: #73c336;
+    color: #73c336;
 }
 
 tbody tr {
-  background-color: var(--row-bg, transparent);
+    background-color: var(--row-bg, transparent);
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.error_text {
+    color: red;
+    font-size: 17px;
+    font-weight: normal;
+    font-family: inherit;
 }
