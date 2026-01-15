@@ -1,9 +1,7 @@
-import ChartJS from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import "./DailyBarChart.css";
 import { DailyResponse } from "../../apiClient/data-contracts";
 
-ChartJS.register();
 interface DailyBarChartProps {
   data?: DailyResponse[];
   isLoading?: boolean;
@@ -54,12 +52,16 @@ export function DailyBarChart({
   }
 
   if (data) {
-    const maxEnergy = Math.max(...data.map((d) => d.total_energy));
-    const colors = data.map((entry) => {
-      if (entry.total_energy >= maxEnergy && maxEnergy > 0) {
-        return chartHigh || "#28B750"; // Green for Peak
+    const colors = data.map((entry, index) => {
+      if (index === 0) return chartLow || "#EB822A";
+      //@ts-ignore
+      const prev = data[index - 1].total_energy;
+
+      if (entry.total_energy > prev) {
+        return chartHigh || "#28B750"; // higher than previous
       }
-      return chartLow || "#EB822A"; // Orange for sub-peak
+
+      return chartLow || "#EB822A"; // not higher than previous
     });
 
     const barChartData = {
@@ -68,7 +70,7 @@ export function DailyBarChart({
           hour12: false,
           hour: "2-digit",
           minute: "2-digit",
-        })
+        }),
       ),
       datasets: [
         {
